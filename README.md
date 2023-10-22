@@ -38,11 +38,14 @@ Configure the database settings in settings.py:
 
     db = client[<"add your databse name">]
 
-Apply migrations:
+Configure the collection settings in signup/views.py :
 
 
-python manage.py makemigrations
-python manage.py migrate
+# signup/views.py
+
+collection = db['< your_collection_name >'] 
+
+
 
 Run the development server:
 
@@ -92,6 +95,6 @@ Using PyMongo
 
 PyMongo is used as the NoSQL database. Custom database functions are implemented to handle user registration, profile retrieval, and logout.
 
-#Error Handling
+# Error Handling
 
 Custom exception handling is implemented to provide meaningful error messages and responses for different scenarios.
