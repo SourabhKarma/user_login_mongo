@@ -14,8 +14,8 @@ Setup
 Clone the repository:
 
 
-    git clone https://github.com/yourusername/yourproject.git
-    cd yourproject
+    git clone https://github.com/SourabhKarma/user_login_mongo.git
+    cd django_mongo
 
 Create a virtual environment (recommended):
 
@@ -43,7 +43,7 @@ Configure the collection settings in signup/views.py :
 
 # signup/views.py
 
-collection = db['< your_collection_name >'] 
+    collection = db['< your_collection_name >'] 
 
 
 
