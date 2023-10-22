@@ -1,6 +1,6 @@
 Django REST API with PyMongo
 
-This is a Django REST framework project with PyMongo as the database, featuring user authentication, a custom user model, and API endpoints for user management.
+This is a Django REST framework project with PyMongo as the database, featuring user authentication, Throttling, and API endpoints for user management.
 Prerequisites
 
     Python (3.7+)
