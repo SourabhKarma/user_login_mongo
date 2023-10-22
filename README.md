@@ -11,22 +11,22 @@ Prerequisites
 
 Setup
 
-    Clone the repository:
+Clone the repository:
 
 
-git clone https://github.com/yourusername/yourproject.git
-cd yourproject
+    git clone https://github.com/yourusername/yourproject.git
+    cd yourproject
 
 Create a virtual environment (recommended):
 
 
-python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
 
 Install dependencies:
 
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 Configure the database settings in settings.py:
 
