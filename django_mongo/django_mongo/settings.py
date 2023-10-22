@@ -107,7 +107,7 @@ url = "mongodb://localhost:27017"
 
 client  = pymongo.MongoClient(url)
 
-db = client["project1_login"]
+db = client["< your_dabase_name >"]
 
 
 
