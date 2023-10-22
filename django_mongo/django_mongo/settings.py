@@ -56,7 +56,7 @@ REST_FRAMEWORK = {
     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
     # ),
     'DEFAULT_THROTTLE_RATES': {
-        'login_scope':'8/minutes',
+        'login_scope':'3/minutes',
     },
 }
 
