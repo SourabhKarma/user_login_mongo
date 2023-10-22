@@ -10,7 +10,7 @@ Prerequisites
     PyMongo
     Postman (for testing APIs)
 
-Setup
+# Setup
 
 Clone the repository:
 
