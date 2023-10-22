@@ -32,11 +32,11 @@ Configure the database settings in settings.py:
 
 
 # settings.py
-url = "mongodb://localhost:27017"
+    url = "mongodb://localhost:27017"
 
-client  = pymongo.MongoClient(url)
+    client  = pymongo.MongoClient(url)
 
-db = client[<"add your databse name">]
+    db = client[<"add your databse name">]
 
 Apply migrations:
 
