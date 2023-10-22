@@ -56,7 +56,7 @@ REST_FRAMEWORK = {
     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
     # ),
     'DEFAULT_THROTTLE_RATES': {
-        'login_scope':'3/minutes',
+        'login_scope':'8/minutes',
     },
 }
 
@@ -107,7 +107,7 @@ url = "mongodb://localhost:27017"
 
 client  = pymongo.MongoClient(url)
 
-db = client["< your_dabase_name >"]
+db = client["project1_login"]
 
 
 

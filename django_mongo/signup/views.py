@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import CustomUser 
 from django_mongo.settings import db
 
 from rest_framework.permissions import AllowAny
@@ -19,7 +18,7 @@ import bcrypt
 
 # ++++++++++++++++++++++   LOGIN +++++++++++++++++++++
 
-
+collection = db['project1_system'] 
 
 
 class CreateUserView(APIView):
@@ -39,6 +38,7 @@ class CreateUserView(APIView):
             phone_number = serializer.validated_data['phone_number']
             password = serializer.validated_data['password']
             
+            
 
             if not phone_number or not password:
                 return Response({'error': 'Please provide both phone number and password'}, status=status.HTTP_400_BAD_REQUEST)
@@ -49,14 +49,14 @@ class CreateUserView(APIView):
                 print("Failed to create user")
                 return Response({'error': 'User with this phone number already exists'}, status=status.HTTP_400_BAD_REQUEST)
 
-            self.create_user(phone_number, password)
+            self.create_user(phone_number,password)
 
             user = self.get_by_phone_number(phone_number)
             
             if user is None:
                 return Response({'error': 'Failed to create user'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            print(user)
+            # print(user)
             
             
 
@@ -78,9 +78,9 @@ class CreateUserView(APIView):
 
 
 
-    def create_user(self, phone_number, password):
+    def create_user(self, phone_number, password,):
 
-        users_collection = db['project1_system']
+        users_collection = collection
         
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
@@ -94,7 +94,7 @@ class CreateUserView(APIView):
 
     def get_by_phone_number(self, phone_number):
 
-        users_collection = db['project1_system'] 
+        users_collection = collection
 
         return users_collection.find_one({'phone_number': phone_number})
 
@@ -122,7 +122,8 @@ class ProfileView(APIView):
 
         profile_data = {
             'phone_number': user.get('phone_number'),
-            # Include other profile fields as needed
+            'password': user.get('password'),
+            'auth_token': user.get('auth_token'),
         }
 
         return Response(profile_data, status=status.HTTP_200_OK)
@@ -130,7 +131,7 @@ class ProfileView(APIView):
     def get_user_by_token(self,auth_token):
 
 
-        users_collection = db['project1_system'] 
+        users_collection = collection
         
 
 
@@ -151,11 +152,11 @@ class LogoutView(APIView):
 
         self.clear_user_sessions_and_tokens(auth_token)
 
-        return Response({'message': 'Logout successfully'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Logout successfully , Token has been removed'}, status=status.HTTP_200_OK)
     
     def clear_user_sessions_and_tokens(self,auth_token):
 
-        users_collection = db['project1_system'] 
+        users_collection = collection
 
         users_collection.update_one(
             {'auth_token': auth_token},
